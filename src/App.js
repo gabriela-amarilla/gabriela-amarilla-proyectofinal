@@ -1,13 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import './AppOutput.css';
+import Menu from './Components/Menu';
+import Nosotros from './Components/Nosotros';
+import Instalaciones from './Components/Instalaciones';
+import Opciones from './Components/Opciones';
+import Contacto from './Components/Contacto';
+import { useState } from 'react';
 
-function App() {
+
+const Container = ({menuActivo}) => {
+  return (
+    <div>
+      Contenido de {menuActivo}
+    </div>
+  )
+}
+
+function App() {  
+  const [menuActivo, setMenuActivo] = useState ('Home');
   return (
     <div className="App">
-      <header className="App-header">
-        <h1> Proyecto Final Programando +</h1>
-        <h2> Loading...</h2>
+      <header className="Menu">
+
+        <Menu className= "Menu-header" menuActivo={menuActivo} setMenuActivo= {setMenuActivo}/>
+        <Container menuActivo = {menuActivo}/>
+        
+
       </header>
+
+      <body>
+       <Nosotros/> 
+       <Instalaciones/>
+       <Opciones/>
+       <Contacto/>
+       
+      </body>
+
     </div>
   );
 }
