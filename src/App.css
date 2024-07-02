@@ -1,10 +1,2 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-.Menu-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
 
