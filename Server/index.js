@@ -5,7 +5,6 @@
 //Importar y configurar dotenv para las variables de entorno
 require("dotenv").config();
 
-
 //Hacemos el import de express.js
 const express = require("express");
 
@@ -20,13 +19,13 @@ const jwtConfig = require("../jwt.config");
 
 //Hacemos el import de mongoose y bcrypt
 const mongoose = require("mongoose");
+const { CgPassword } = require("react-icons/cg");
 
 
 
 //----------------------------------------------------------------------------
 // + Configuracion e inicializacion
 //----------------------------------------------------------------------------
-
 
 //Creamos nuestra app backend con el metodo express()
 const app = express();
@@ -38,12 +37,12 @@ app.set("key", jwtConfig.clave)
 //Activar el middleware express.json
 app.use(express.json());
 
+app.use(
+    cors(corsOptions)
+);
 //Configuramos un puerto especifico desde una variable de entorno
 //Si no existe entonces asignamos el peurto 3001
 const PORT = process.env.PORT || "3001";
-
-//Password de BD
-const password = process.env.DB_PASS ||  "xqQiXKazZv1BpfoI"; 
 
 //Configurar CORS para acceder desde el frontend
 var corsOptions = {
@@ -51,62 +50,14 @@ var corsOptions = {
     optionsSuccessStatus: 200,
 };
 
-
-
-//4- Nueva escucha post (/autenticar) que responda un token a nuestro front end
-// app.post('/autenticar', (req, res) => {
-//     //El frontend nos va a enviar usuario/contraseña {user: "user 1", pass: "pass2"}
-//     if (req.body.user) {
-//     const usuario = req.body.user;
-//     //creaer el token
-//     const payload = {
-//         usuario,
-//         checked: true
-//     };
-//     const key = app.get('key');
-//     try {
-//         const token = jwt.sing(payload, key);
-//         res.send ({
-//             message: 'Token creado',
-//             token
-//         });
-
-//     } catch (error) {
-//         res.send({
-//             message: 'Hubo un error'
-//         })
-//     }
-//     }
-    
-// })
-
-//Escuchar solicitud POST desde nuestro frontend en la ruta "/tarea"
-app.post('/', (req, res)=>{
-    console.log("Body de mi reques",req.body);
-    if (req.body) {
-        res.send({message: "Recibimos tu tarea."})
-    } else {
-        res.send({message: "No recibimos tu tarea"})
-    }
-    
-});
-
-
-
-//Actviamos CORS para todas las solicitudes
-app.use(
-    cors(corsOptions)
-);
-
 //Hacemos que nuestra aplicacion escuche el puerto que configuramos
 //con el metodo listen (puerto, callback)
 app.listen(PORT, () => {
-    console.log (`Servidor escuchando en el puerto ${PORT}`)
+  console.log (`Servidor escuchando en el puerto ${PORT}`)
 })
 
-
 //Conexion a MongoDB con Mongoose
-const uri = `mongodb+srv://gabrielaamarillag:${password}@cluster0.h6m7mnk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const uri = `mongodb+srv://${process.env.DB_USUARIO}:${process.env.DB_PASSWORD}@${process.env.DB_DOMAIN}/${process.env.DB_NAME}&appName=${process.env.DB_CLUSTER}`;
 
 const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 
@@ -121,6 +72,66 @@ async function run() {
     await mongoose.disconnect();
   }
 }
-run().catch(console.dir);
+run().catch(console.dir); 
 
 //----------
+
+//------------------------------------------------------------------------
+//APIS endpoints
+//------------------------------------------------------------------------
+//Ruta para autenticar a un usuario y hacer login
+app.post("/api/register", async (req, res) => {
+  try {
+    // Chequeamos si el email existe en nuestra base de datos
+    const existingUser = await Usuario.findOne({ email: req.body.email });
+    if (existingUser) {
+      return res.status(400).json({ error: "Email already exists" });
+    }
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+    // Creamos el objeto usuario desde el modelo Usuario
+    const newUser = new Usuario({
+      email: req.body.email,
+      password: hashedPassword,
+    });
+
+    await newUser.save();
+    res.status(201).json({ message: "Usuario registrado correctamente" });
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
+
+app.post("/api/login", async (req, res) => {
+  try {
+    // Chequeamos si el email existe
+    const user = await Usuario.findOne({ email: req.body.email });
+    if (!user) {
+      return res
+        .status(401)
+        .json({ error: "El email no existe en nuestra base de datos" });
+    }
+    // Comparar las contraseñas
+    const passwordMatch = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
+    if (!passwordMatch) {
+      return res
+        .status(401)
+        .json({ error: "La contraseña no es correcta" });
+    }
+    const secret = app.get("key");
+    const token = jwt.sign({ email: user.email }, secret);
+    res.status(200).json({ token, ok: true });
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
+

@@ -1,6 +1,7 @@
 import React from 'react'
 import casitaarbol from "../Assets/casitaarbol.JPG";
-
+import quincho from "../Assets/quincho.JPG";
+import IMG_7823 from "../Assets/IMG_7823.JPG";
 
 const Instalaciones = () => {
   return (
@@ -12,22 +13,22 @@ const Instalaciones = () => {
         </div>
 
         <div className='grid grid-cols-3 grid-rows-2 h-[80vh]'>
-          <img className=' w-full h-full p-2'src={casitaarbol} alt='casita' />
-          <img className=' w-full h-full p-2'src={casitaarbol} alt='casita' />
-          <img className=' w-full h-full p-2'src={casitaarbol} alt='casita' />
+          <img className=' w-full h-full p-2 object-cover'src={casitaarbol} alt='casita' />
+          <img className=' w-full h-full p-2 object-cover'src={quincho} alt='quincho' />
+          <img className=' w-full h-full p-2 object-cover'src={IMG_7823} alt='exterior' />
 
           <div>
-              <h3 className='font-bold'>Casa Principal</h3>
-              <p>Disfruta de todas las comodidades que te ofrecemos</p>
+              <button id='btn1'>Casa Principal</button>
+              <p className='px-2'>Con capacidad para que 20 personas pasen la noche, con una distribucion ideal para grupos diversos</p>
           </div>
 
           <div>
-              <h3 className='font-bold'>Quincho Principal</h3>
-              <p>Equipado con todo lo necesario para disfrutar de encuentros con amigos o reuniones de trabajo</p>
+              <button id='btn1'>Quincho Principal</button>
+              <p className='px-2'>Equipado con todo lo necesario para disfrutar de encuentros con amigos o reuniones de trabajo</p>
           </div>
           <div>
-            <h3 className='font-bold'>Outdoors</h3>
-            <p>Multiples espacios para disfrutar de la naturaleza y de los seres que en ella habitan</p>
+            <button id='btn1'>Outdoors</button>
+            <p className='px-2'>Multiples espacios para disfrutar de la naturaleza y de los seres que en ella habitan</p>
           
           </div>
           

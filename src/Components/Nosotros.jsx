@@ -12,7 +12,11 @@ function Nosotros (){
 
         <div className='flex flex-col h-full p-4'>
           <h2 className='text-5xl md:text-6xl'>Nosotros</h2>
-          <p className='mt-8'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quam, sequi eveniet id dolor corporis numquam sapiente quae earum aut quasi repellendus sint, error tenetur odio ducimus laborum impedit tempore.</p>
+          <p className='mt-8'> Desde 1997 nos dedicamos a resguardar este espacio, hogar de aves y varias especies de mamiferos. El predio tiene una extensión de 3HA, con una pequeña zona boscosa de fácil acceso. <br/> 
+          <br/>
+          Abrimos las puertas al público en diciembre del 2020. Desde ese momento trabajamos brindado experiencias amenas a personas que buscan estar en contacto con la naturaleza, disfrutando de todas las comodidades que ofrecemos. <br/>
+          <br/>
+          <i>Nos lo tomamos con calma</i></p>
         </div>
 
         <div className='grid grid-cols-2 grid-rows-6 h-[80vh]'>
