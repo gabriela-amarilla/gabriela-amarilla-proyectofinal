@@ -9,7 +9,7 @@ const Menu = () => {
             
             <img src={principal} alt="fondo" className="top-0 left-0 w-full h-screen object-cover" />
 
-            <div className="contenedor grid lg:grid-cols-2 ">
+            <div className="menu grid lg:grid-cols-2 ">
 
                 <div id="c-izquierda" className="absolute top-0 w-full h-full flex flex-col justify-center text-white" >
                     <div className="md:left-[10%] max-w-[1100px] m-auto absolute p-4">
@@ -21,6 +21,8 @@ const Menu = () => {
                         <p> Si todavía no tenes una cuenta, registrate acá</p>
                     </div>
                 </div>
+
+                
 
             </div>
   
