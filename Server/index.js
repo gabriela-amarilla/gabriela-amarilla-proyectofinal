@@ -26,7 +26,7 @@ app.use(express.json()); // Se configura para poder manejar solicitudes JSON
 app.use(
     cors(corsOptions)
 );
-const PORT = process.env.PORT || "3000";
+const PORT = process.env.PORT || "3001";
 
 // Se configura CORS para el acceso desde el frontend
 var corsOptions = {
@@ -101,6 +101,8 @@ app.post ("/register", (request, response) => {
 //---Login de Usuario
 app.post("/login", (request, response) => {
   //Busqueda de usuario en la base
+  console.log(request.body)
+
   Usuario.findOne({email: request.body.email})
     //En caso de que exista, se verifica, se crea el Token y se logea
     .then((user)=> {
@@ -108,6 +110,7 @@ app.post("/login", (request, response) => {
       .then((passwordCheck)=> {
         //Verificacion de pass
         if (!passwordCheck){
+
           return response.status(400).send({
             message: "La contraseña no coincide",
             error,
@@ -123,6 +126,7 @@ app.post("/login", (request, response) => {
           {expiresIn: "24h"}
         );
         //Comunicacion de exito 
+        console.log("Existo")
         response.status(200).send ({
           message: "Login exitoso",
           email: user.email,
@@ -130,6 +134,7 @@ app.post("/login", (request, response) => {
         })
       })
       .catch ((error)=> {
+        console.log("Existo", error)
         response.status(400).send({
           message: "Error en contraseña",
           error,
@@ -137,6 +142,7 @@ app.post("/login", (request, response) => {
       })
     })
     .catch ((e)=> {
+      console.log("Existo", e)
       response.status(404).send({
         message: "No se encuentra el email",
         e,
@@ -158,9 +164,9 @@ app.get("/auth-endpoint", auth, (request, response)=> {
 })
 
 
-// app.get("/", (req, res) => {
-//   res.send("Holaaaaa mundo");
-// });
+app.get("/", (req, res) => {
+  res.send("Holaaaaa mundo");
+});
 
 // Define the /autenticar route
 // app.post('/api/autenticar', async (req, res) => {

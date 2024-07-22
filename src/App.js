@@ -9,7 +9,7 @@ import './index.css';
 import Opciones from './Components/Opciones';
 import NavBar from './Components/NavBar';
 
-import SingUp from './pages/SingUp';
+import Singup from './Components/Singup';
 import Login from './Components/Login';
 
  
@@ -20,10 +20,12 @@ function App() {
   return (
     <>
       <NavBar/>
+     
       
       
       <Routes>
-        <Route path='/' element={<Login/>}/>
+        <Route path='/' element={<Singup/>}/>
+        <Route path='/login' element={<Login/>}/>
         <Route path='/Nosotros' element={<Nosotros/>}/>
         <Route path='/Instalaciones' element={<Instalaciones/>}/>
         <Route path='/Opciones' element={<Opciones/>}/>
@@ -33,6 +35,6 @@ function App() {
   
   </>
 );
-}
+} 
 
 export default App;

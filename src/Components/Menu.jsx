@@ -5,7 +5,7 @@ import principal from "../Assets/principal.jpg";
 const Menu = () => { 
    
     return(
-        <div className="w-full h-screen">
+        <div className="w-full h-screen relative">
             
             <img src={principal} alt="fondo" className="top-0 left-0 w-full h-screen object-cover" />
 
