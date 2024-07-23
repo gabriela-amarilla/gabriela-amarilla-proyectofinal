@@ -103,14 +103,20 @@ app.post("/login", (request, response) => {
   //Busqueda de usuario en la base
   console.log(request.body)
 
-  Usuario.findOne({email: request.body.email})
+    Usuario.findOne({email: request.body.email})
     //En caso de que exista, se verifica, se crea el Token y se logea
     .then((user)=> {
+      if (!user) {
+        console.log("error en usuario")
+        return response.status(404).send({
+          message: "No se encuentra el email",
+        })
+      }
       bcrypt.compare(request.body.password, user.password)
       .then((passwordCheck)=> {
         //Verificacion de pass
         if (!passwordCheck){
-
+          console.log("La contra no coincide")
           return response.status(400).send({
             message: "La contraseña no coincide",
             error,
@@ -126,7 +132,7 @@ app.post("/login", (request, response) => {
           {expiresIn: "24h"}
         );
         //Comunicacion de exito 
-        console.log("Existo")
+        console.log("Login exitoso")
         response.status(200).send ({
           message: "Login exitoso",
           email: user.email,
@@ -134,7 +140,7 @@ app.post("/login", (request, response) => {
         })
       })
       .catch ((error)=> {
-        console.log("Existo", error)
+        console.log("Error en la contrasenha", error)
         response.status(400).send({
           message: "Error en contraseña",
           error,

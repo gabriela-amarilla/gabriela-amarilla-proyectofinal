@@ -13,10 +13,8 @@ const Login = () => {
  
 
   const handleLogin = async (e) => {
+    console.log("Login the user")
     e.preventDefault();
-    alert ("submited");
-
-
     // const configuration = {
     //   method: "post",
     //   url: "http://localhost:3001/login",
@@ -54,6 +52,9 @@ const Login = () => {
         console.log("Ok");
         console.log(response.status);
         console.log(response)
+        if (response.status) {
+          
+        }
       } catch (e) {
         console.log(e);
       }
