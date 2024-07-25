@@ -9,25 +9,17 @@ const Singup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate("");
+  const navigate = useNavigate();
   
 
   const handleSingup = (e) => {
     e.preventDefault();
-    alert ("submited");
     axios.post ("http://localhost:3001/register", {name, email, password})
     .then(result=> {console.log(result) 
       navigate("/login")
     })
     .catch(err => console.log(err))
-    // const configuration = {
-    //   method: "post",
-    //   url: "",
-    //   data: {
-    //     email, 
-    //     password,
-    //   },
-    // };
+   
   }
 
 

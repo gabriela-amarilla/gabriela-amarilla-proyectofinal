@@ -136,7 +136,8 @@ app.post("/login", (request, response) => {
         response.status(200).send ({
           message: "Login exitoso",
           email: user.email,
-          token,
+          token, 
+          ok: true
         })
       })
       .catch ((error)=> {
@@ -170,9 +171,7 @@ app.get("/auth-endpoint", auth, (request, response)=> {
 })
 
 
-app.get("/", (req, res) => {
-  res.send("Holaaaaa mundo");
-});
+
 
 // Define the /autenticar route
 // app.post('/api/autenticar', async (req, res) => {

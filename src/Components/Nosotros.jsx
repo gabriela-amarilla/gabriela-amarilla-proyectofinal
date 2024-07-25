@@ -3,11 +3,14 @@ import hamaca from "../Assets/hamaca.jpg";
 import entrada from "../Assets/entrada.JPG";
 import casitaarbol from "../Assets/casitaarbol.JPG";
 import patio from "../Assets/patio.JPG";
+import NavBar from './NavBar';
 
 
 
 function Nosotros (){
   return (
+    <div>
+    <NavBar/>
     <div className='max-w-[1400px] m-auto py-16 px-4 grid lg:grid-cols-2 gap-4'>
 
         <div className='flex flex-col h-full p-4'>
@@ -26,6 +29,7 @@ function Nosotros (){
             <img className='row-span-3 object-cover w-full h-full p-2'src={hamaca} alt='hamaca' />
         </div>
 
+    </div>
     </div>
   )
 }

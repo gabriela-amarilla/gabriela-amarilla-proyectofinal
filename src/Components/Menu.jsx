@@ -16,9 +16,7 @@ const Menu = () => {
 
                         <h1 className="font-bold text-5xl md:text-6xl drop-shadow-2xl"> Quinta Panambi Hovy</h1>
                         <h2>Nos lo tomamos con calma</h2>
-                        <button>Inicia sesión para ver más
-                        </button>
-                        <p> Si todavía no tenes una cuenta, registrate acá</p>
+                
                     </div>
                 </div>
 

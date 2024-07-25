@@ -2,14 +2,14 @@ import React from 'react';
 import reposera from "../Assets/reposera.JPG";
 import noche2 from "../Assets/noche2.jpg";
 import entrada from "../Assets/entrada.JPG";
-
-
-
-
+import NavBar from './NavBar';
 
 
 const Opciones = () => {
   return (
+    <div>
+      <NavBar/>
+    
     <div className='max-w-[1400px] m-auto py-16 px-4 grid '>
         <div className='h-full p-4'>
           <h2 className='text-5xl md:text-6xl'>Opciones</h2>
@@ -73,6 +73,7 @@ const Opciones = () => {
 
         
 
+    </div>
     </div>
   )
 }

@@ -2,9 +2,12 @@ import React from 'react'
 import casitaarbol from "../Assets/casitaarbol.JPG";
 import quincho from "../Assets/quincho.JPG";
 import IMG_7823 from "../Assets/IMG_7823.JPG";
+import NavBar from './NavBar';
 
 const Instalaciones = () => {
   return (
+    <div>
+      <NavBar/>
     <div className='max-w-[1400px] m-auto py-16 px-4 grid lg:grid-cols-2 gap-4'>
 
         <div className='flex flex-col h-full p-4'>
@@ -36,6 +39,7 @@ const Instalaciones = () => {
             
         </div>
 
+    </div>
     </div>
    
   )
