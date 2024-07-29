@@ -171,8 +171,6 @@ app.get("/auth-endpoint", auth, (request, response)=> {
 })
 
 
-
-
 // Define the /autenticar route
 // app.post('/api/autenticar', async (req, res) => {
 //   // El frontend nos va a enviar usuario/contrasenha { user: "user1", pass: "pass2" }
@@ -209,76 +207,6 @@ app.get("/auth-endpoint", auth, (request, response)=> {
 //   }
 // });
 
-
-
-
-
-
-//------------------------------------------------------------------------
-//APIS endpoints
-//------------------------------------------------------------------------
-//Ruta para autenticar a un usuario y hacer login
-
-
-
-
-// app.post("/api/register", async (req, res) => {
-//   try {
-//     console.log("Requestbody", req.body);
-//     // Chequeamos si el email existe en nuestra base de datos
-//     const existingUser = await Usuario.findOne({ email: req.body.email });
-//     if (existingUser) {
-//       return res.status(400).json({ error: "Email already exists" });
-      
-//     }
-
-//     // Hash the password
-//     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
-//     // Creamos el objeto usuario desde el modelo Usuario
-//     const newUser = new Usuario({
-//       email: req.body.email,
-//       password: hashedPassword,
-//     });
-
-//     await newUser.save();
-//     res.status(201).json({ message: "Usuario registrado correctamente" });
-
-//   } catch (error) {
-//     console.error("Internal Server Error:", error);
-
-//     res.status(500).json({ error: "Internal server error" });
-//   }
-// });
-
-
-
-// app.post("/api/login", async (req, res) => {
-//   try {
-//     // Chequeamos si el email existe
-//     const user = await Usuario.findOne({ email: req.body.email });
-//     if (!user) {
-//       return res
-//         .status(401)
-//         .json({ error: "El email no existe en nuestra base de datos" });
-//     }
-//     // Comparar las contraseñas
-//     const passwordMatch = await bcrypt.compare(
-//       req.body.password,
-//       user.password
-//     );
-//     if (!passwordMatch) {
-//       return res
-//         .status(401)
-//         .json({ error: "La contraseña no es correcta" });
-//     }
-//     const secret = app.get("key");
-//     const token = jwt.sign({ email: user.email }, secret);
-//     res.status(200).json({ token, ok: true });
-//   } catch (error) {
-//     res.status(500).json({ error: "Internal server error" });
-//   }
-// });
 
 
 //Se establece que la app se escuche desde el puerto configurado
