@@ -15,8 +15,9 @@ const Singup = () => {
   const handleSingup = (e) => {
     e.preventDefault();
     axios.post ("http://localhost:3001/register", {name, email, password})
-    .then(result=> {console.log(result) 
-      navigate("/login")
+    .then(result=> {
+      console.log(result);
+      navigate("/login");
     })
     .catch(err => console.log(err))
    
@@ -37,7 +38,7 @@ const Singup = () => {
                     <input 
                     className='border rounded w-auto py-2 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline'
                     type="text" 
-                    name="text" 
+                    name="name" 
                     placeholder='Ingresar Nombre Completo'
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -77,13 +78,14 @@ const Singup = () => {
                     <input 
                     className='bg-lime-900 hover:bg-lime-950 text-white font-bold py-2 px-4 rounded'
                     type='submit' 
-                    value="Iniciar Sesión" 
+                    value="Registrarse" 
                     onClick={(e)=> handleSingup(e)}
                     />
                   </div>
                 </form>
                 <p>Ya tenes una cuenta?</p>
                 <Link to="/login" className='text-lime-900 hover:font-extrabold'>Login</Link>
+                
             </div> 
           
     </div>

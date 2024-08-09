@@ -1,19 +1,12 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-
-
-
+import { useNavigate, Link } from 'react-router-dom';
 
 const Login = (props) => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const navigate = useNavigate();
-  const jwt = localStorage.getItem('token');
-  const [showComponent, setShowComponent] = useState(true);
-
 
   const handleLogin =  (e) => {
     console.log("Login the user")
@@ -34,9 +27,10 @@ const Login = (props) => {
         console.log(result.status)
         localStorage.setItem('token', result.data.token);
         
-        if (result.status != "200"){
+        if (result.status !== 200){
           setError(true)}
         else {
+          props.setToken(true);
           navigate('/Nosotros')}
     })
     .catch((error) => {
@@ -87,8 +81,17 @@ const Login = (props) => {
                       onClick={(e)=> handleLogin(e)}
                       />
                     </div>
-                    
+                    <p>No estas registrado?</p>
+
                   </form>
+
+                  <Link to="/" className='text-lime-900 hover:font-extrabold'>Registrarse</Link>
+                    {/* <input 
+                    className='bg-lime-900 hover:bg-lime-950 text-white font-bold py-2 px-4 rounded'
+                    type='submit' 
+                    value="Registrarse" 
+                    onClick={()=> navigate('/')}
+                    /> */}
               </div> 
             
       </div>

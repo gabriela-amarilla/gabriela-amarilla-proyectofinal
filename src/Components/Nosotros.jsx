@@ -4,6 +4,7 @@ import entrada from "../Assets/entrada.JPG";
 import casitaarbol from "../Assets/casitaarbol.JPG";
 import patio from "../Assets/patio.JPG";
 import NavBar from './NavBar';
+import principal from "../Assets/principal.jpg";
 
 
 
@@ -11,6 +12,26 @@ function Nosotros (){
   return (
     <div>
     <NavBar/>
+    <div className="w-full h-screen relative">
+            
+            <img src={principal} alt="fondo" className="top-0 left-0 w-full h-screen object-cover" />
+
+            <div className="menu grid lg:grid-cols-2 ">
+
+                <div id="c-izquierda" className="absolute top-0 w-full h-full flex flex-col justify-center text-white" >
+                    <div className="md:left-[10%] max-w-[1100px] m-auto absolute p-4">
+
+                        <h1 className="font-bold text-5xl md:text-6xl drop-shadow-2xl"> Quinta Panambi Hovy</h1>
+                        <h2>Nos lo tomamos con calma</h2>
+                
+                    </div>
+                </div>
+
+                
+
+            </div>
+  
+        </div>
     <div className='max-w-[1400px] m-auto py-16 px-4 grid lg:grid-cols-2 gap-4'>
 
         <div className='flex flex-col h-full p-4'>

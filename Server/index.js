@@ -159,53 +159,16 @@ app.post("/login", (request, response) => {
 });
 
 
-//--- Proteccion de rutas
+//--- Proteccion de rutas (Prueba)
 //ruta libre
-app.get("/free-endpoint", (request, response)=> {
-  response.json({message: "Usuario libre de acceso"})
-});
-
-//ruta autenticada
-app.get("/auth-endpoint", auth, (request, response)=> {
-  response.json({message: "Contas con autorizacion"})
-})
-
-
-// Define the /autenticar route
-// app.post('/api/autenticar', async (req, res) => {
-//   // El frontend nos va a enviar usuario/contrasenha { user: "user1", pass: "pass2" }
-//   if(req.body.email) {
-//       // verificamos que el email exista
-//       const emailExistente = await Usuario.find({ email: req.body.email });
-//       if(emailExistente){
-//           const usuario = req.body.user;
-//           // TODO: comparar la contrasena recibida con la guardada en la bd
-//           // usar bcrypt.compare()
-//           // Crear el token
-//           const payload = {
-//               usuario,
-//               checked: true
-//           };
-//           const key = app.get('key');
-//           try {
-//               const token = jwt.sign(payload, key);
-//               res.send({
-//                   message: 'Token creado',
-//                   token
-//               });
-//           } catch (error) {
-//               res.send({
-//                   message: 'Hubo un error'
-//               })
-//           }
-//       } else {
-//           res.send({message: "El email no existe en nuestros registros"})
-//       }
-      
-//   } else {
-//       res.send({message: "No se recibio el user"});
-//   }
+// app.get("/free-endpoint", (request, response)=> {
+//   response.json({message: "Usuario libre de acceso"})
 // });
+
+// //ruta autenticada
+// app.get("/auth-endpoint", auth, (request, response)=> {
+//   response.json({message: "Contas con autorizacion"})
+// })
 
 
 

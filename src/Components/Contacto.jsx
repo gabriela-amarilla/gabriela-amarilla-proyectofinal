@@ -15,8 +15,13 @@ const Contacto = () => {
             <p className='text-white italic px-10 py-4'> Direccion <br/>
               Tacuryty, Villeta - Paraguay</p>
             <div className='flex gap-2 justify-items-start px-10 text-white'>
-              <FaInstagram size={20}/>
-              <FaWhatsapp size={20}/>
+              <a href='https://www.instagram.com/quintapanambihovy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' target='_blank'> 
+                <FaInstagram size={30}/>
+              </a>
+              <a href='https://wa.me/994810482' target='_blank'>
+              <FaWhatsapp size={30}/>
+              </a>
+              
             </div>
               
           </div>   
